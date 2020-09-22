@@ -22,7 +22,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
     $path-to-fonts: 'fonts';
     $path-to-svg: 'svg';
 
-**$4** Import patterns into the main stylesheet. The following line will import everything. [*View this repository's index.scss file to browse the import configuration options*](tree/main/src/index.scss).
+**$4** Import patterns into the main stylesheet. The following line will import everything. [*View this repository's index.scss file to browse the import configuration options*](blob/main/src/index.scss).
 
     @import '~@nycopportunity/patterns/src/scss/imports';
 
