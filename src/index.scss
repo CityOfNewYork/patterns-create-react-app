@@ -1,0 +1,101 @@
+/**
+ * Contents
+ *
+ * - Required
+ * - Option 1
+ * - Option 2
+ * - Option 3
+ * - Tailwindcss
+ */
+
+/**
+ * Required
+ *
+ * Update the Asset paths variables to source from the working directory. This
+ * is required for all options and combinations of imports.
+ */
+
+$cdn: '/src/';
+$path-to-fonts: 'fonts';
+$path-to-svg: 'svg';
+
+/**
+ * Option 1
+ *
+ * Import everything
+ */
+
+// @import '~@nycopportunity/patterns/src/scss/imports';
+
+/**
+ * Option 2
+ *
+ * Import the major pattern blocks
+ */
+
+@import '~@nycopportunity/patterns/src/elements/fonts/fonts';
+@import '~@nycopportunity/patterns/src/scss/objects';
+@import '~@nycopportunity/patterns/src/scss/elements';
+@import '~@nycopportunity/patterns/src/scss/utilities';
+
+/** Tailwindcss. Fully compiled set of NYCO Utilities. See bottom of this file for more. */
+@import '~@nycopportunity/patterns/dist/utilities/tailwindcss/tailwindcss';
+
+/**
+ * Option 3
+ *
+ * Cherry-pick individual patterns that you need.
+ */
+
+// if @font-face is used it needs to be first imported first.
+// @import '~@nycopportunity/patterns/src/elements/fonts/fonts';
+
+/** Objects */
+
+// @import '~@nycopportunity/patterns/src/objects/header/_header.scss';
+// @import '~@nycopportunity/patterns/src/objects/footer/_footer.scss';
+// @import '~@nycopportunity/patterns/src/objects/feed/_feed.scss';
+// @import '~@nycopportunity/patterns/src/objects/navigation/_navigation.scss';
+// @import '~@nycopportunity/patterns/src/objects/map/_map.scss';
+// @import '~@nycopportunity/patterns/src/objects/content/_content.scss';
+// @import '~@nycopportunity/patterns/src/objects/official/_official.scss';
+
+/** Elements */
+
+// @import '~@nycopportunity/patterns/src/elements/base/_base.scss';
+// @import '~@nycopportunity/patterns/src/elements/code/_code.scss';
+// @import '~@nycopportunity/patterns/src/elements/links/_links.scss';
+// @import '~@nycopportunity/patterns/src/elements/layouts/_layouts.scss';
+// @import '~@nycopportunity/patterns/src/elements/icons/_icons.scss';
+// @import '~@nycopportunity/patterns/src/elements/tables/_tables.scss';
+// @import '~@nycopportunity/patterns/src/elements/buttons/_buttons.scss';
+// @import '~@nycopportunity/patterns/src/elements/select/_select.scss';
+// @import '~@nycopportunity/patterns/src/elements/inputs/_inputs.scss';
+// @import '~@nycopportunity/patterns/src/elements/checkboxes/_checkboxes.scss';
+// @import '~@nycopportunity/patterns/src/elements/radios/_radios.scss';
+
+/** Utilities */
+
+// @import '~@nycopportunity/patterns-framework/src/utilities/spinner/_spinner.scss';
+// @import '~@nycopportunity/patterns-framework/src/utilities/toggle/_toggle.scss';
+// @import '~@nycopportunity/patterns/src/utilities/type/type';
+// @import '~@nycopportunity/patterns/src/utilities/colors/colors';
+// @import '~@nycopportunity/patterns/src/utilities/animate/animate';
+
+/**
+ * Tailwindcss
+ *
+ * The tailwindcss file in the dist directory is the fully compiled set of
+ * NYCO Utilities using the config/tailwind.js file in the patterns source.
+ */
+
+// @import '~@nycopportunity/patterns/dist/utilities/tailwindcss/tailwindcss';
+
+/**
+ * Tailwindcss
+ *
+ * Only if compiling Tailwindcss from the source. This file will only render
+ * the @tailwind utilities variable as a string.
+ */
+
+// @import '~@nycopportunity/patterns/src/utilities/tailwindcss/tailwindcss';

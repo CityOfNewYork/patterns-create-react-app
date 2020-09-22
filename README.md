@@ -1,68 +1,71 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and integrated the [NYCO Patterns library](https://nycopatterns.cityofnewyork.us) as a dependency **without ejection**.
 
-## Available Scripts
+# React Scripts + NYCO Patterns integration
 
-In the project directory, you can run:
+**$1** Install dependencies after [initializing a React Project](https://create-react-app.dev/docs/getting-started).
 
-### `yarn start`
+    npm install sass @nycopportunity/patterns @nycopportunity/patterns-framework@^0.2.1
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* [**Dart Sass**](https://github.com/sass/dart-sass). This will enable [React Scripts'](https://github.com/facebook/create-react-app) use of the Webpack [sass-loader](https://webpack.js.org/loaders/sass-loader/) for compiling **.scss** files.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+* [**NYCO Patterns library**](https://nycopatterns.cityofnewyork.us) (referred to as *library*).
 
-### `yarn test`
+* [**NYCO Patterns Framework**](https://github.com/CityOfNewYork/nyco-patterns-framework) (referred to as *framework*). The latest library is compatible with version `0.2.1` of the framework.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**$2** Use the `SASS_PATH` environment variable to configure your include paths. Initialize or add to your **.env** the following:
 
-### `yarn build`
+    SASS_PATH=src:node_modules/@nycopportunity:node_modules/@nycopportunity/patterns/src:node_modules/@nycopportunity/patterns-framework/src:node_modules/animate.scss
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**$3** Change the **index.css** to **index.scss** and set the library's asset paths variables to use the local project's path.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+    $cdn: '/src/';
+    $path-to-fonts: 'fonts';
+    $path-to-svg: 'svg';
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**$4** Import patterns into the main stylesheet. The following line will import everything. [*View this repository's index.scss file to browse the import configuration options*](tree/main/src/index.scss).
 
-### `yarn eject`
+    @import '~@nycopportunity/patterns/src/scss/imports';
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**$5** Copy distributed assets from the NYCO Patterns framework into the src directory of the project:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    ./node_modules/@nycopportunity/patterns/dist/fonts > ./src/fonts
+    ./node_modules/@nycopportunity/patterns/dist/svg > ./src/svg
+    ./node_modules/@nycopportunity/patterns/dist/icons.svg > ./src/icons.svg
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**$6** Run `npm start` to begin development.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+---
 
-## Learn More
+**Notes**:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* The configuration above is largely dependent on what patterns in the library you will be using in your project. The above steps are based on the usage of *all* NYCO Patterns stylesheets.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Node Sass can be used in place of Dart Sass, however, future pattern libraries will be migrating to Dart Sass.
 
-### Code Splitting
+* The latest version of the framework *may* be used but not all of the patterns in the library are be compatible with it.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+* Below is a breakdown of the include paths for the `SASS_PATH` variable. Not all of them are required if only a few of the patterns are being used.
 
-### Analyzing the Bundle Size
+```
+src
+node_modules/@nycopportunity
+node_modules/@nycopportunity/patterns/src
+node_modules/@nycopportunity/patterns-framework/src
+node_modules/animate.scss
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+* The font and svg assets only need to migrated into the project if using the NYCO Pattern's [fonts](https://github.com/IBM/plex) and/or [icons](https://nycopatterns.cityofnewyork.us/icons). You may also include fonts and svgs via [Google Fonts Embed](https://fonts.google.com/specimen/IBM+Plex+Sans) (fonts only) or the [CDN method of integration](https://github.com/CityOfNewYork/nyco-patterns-framework/blob/main/docs/installation.md#cdn).
 
-### Making a Progressive Web App
+* Icons still require the provided [Framework Utility Script](https://github.com/CityOfNewYork/nyco-patterns-framework/tree/main/src/utilities/icons) ([or a similar method](https://css-tricks.com/ajaxing-svg-sprite/)) to add them to the DOM. However, the CDN path to the distributed icons can be passed to the method as opposed to hosting them with the project.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+* Guidance for this example is based on the following:
+  * Create React App's [*Adding a Sass Stylesheet* documentation](https://create-react-app.dev/docs/adding-a-sass-stylesheet/)
+  * Webpack's [*sass-loader* documentation](https://webpack.js.org/loaders/sass-loader/)
 
-### Advanced Configuration
+**Happy Coding!**
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+---
 
-### Deployment
+![The Mayor's Office for Economic Opportunity](NYCMOEO_SecondaryBlue256px.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[The Mayor's Office for Economic Opportunity](http://nyc.gov/opportunity) (NYC Opportunity) is committed to sharing open source software that we use in our products. Feel free to ask questions and share feedback. **Interested in contributing?** See our open positions on [buildwithnyc.github.io](http://buildwithnyc.github.io/). Follow our team on [Github](https://github.com/orgs/CityOfNewYork/teams/nycopportunity) (if you are part of the [@cityofnewyork](https://github.com/CityOfNewYork/) organization) or [browse our work on Github](https://github.com/search?q=nycopportunity).
