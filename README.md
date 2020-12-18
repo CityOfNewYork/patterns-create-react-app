@@ -1,10 +1,10 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and integrated the [NYCO Patterns library](https://nycopatterns.cityofnewyork.us) as a dependency **without ejection**.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and integrated the [NYCO Patterns library](https://nycopatterns.cityofnewyork.us) as a dependency **without ejection**. This integration is compatible with React Scripts **v3.4**. Version 4 of React Scripts introduces [breaking changes to asset include paths](https://github.com/facebook/create-react-app/issues/9870).
 
 # React Scripts + NYCO Patterns integration
 
 **$1** Install dependencies after [initializing a React Project](https://create-react-app.dev/docs/getting-started).
 
-    npm install sass @nycopportunity/patterns @nycopportunity/patterns-framework@^0.2.1
+    npm install sass @nycopportunity/patterns @nycopportunity/patterns-framework@^0.2.4
 
 * [**Dart Sass**](https://github.com/sass/dart-sass). This will enable [React Scripts'](https://github.com/facebook/create-react-app) use of the Webpack [sass-loader](https://webpack.js.org/loaders/sass-loader/) for compiling **.scss** files.
 
